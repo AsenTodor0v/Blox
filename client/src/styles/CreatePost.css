@@ -1,0 +1,46 @@
+.create-post-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-post-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.create-post-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-post-container label {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.create-post-container input,
+.create-post-container textarea {
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.create-post-container button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.create-post-container button:hover {
+    background-color: #2980b9;
+}

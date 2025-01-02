@@ -1,0 +1,39 @@
+/* Profile Page Styles */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-details {
+    text-align: left;
+}
+
+.profile-details img {
+    max-width: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.profile-actions {
+    margin-top: 20px;
+}
+
+.profile-update-btn,
+.profile-delete-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.profile-update-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.profile-delete-btn {
+    background-color: #FF6347;
+    color: white;
+    border: none;
+}
