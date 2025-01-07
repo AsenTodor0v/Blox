@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import api from '../api';
 import { jwtDecode } from 'jwt-decode';
 import '../styles/Home.css';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 
 export default function Home() {
     const [posts, setPosts] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem(ACCESS_TOKEN);
         if (token) {
             try {
                 const decoded = jwtDecode(token); // Use `jwtDecode` or `decode`
@@ -17,8 +18,8 @@ export default function Home() {
                 if (decoded.exp > currentTime) {
                     setIsLoggedIn(true);
                 } else {
-                    localStorage.removeItem('access_token');
-                    localStorage.removeItem('refresh_token');
+                    localStorage.removeItem(ACCESS_TOKEN);
+                    localStorage.removeItem(REFRESH_TOKEN);
                 }
             } catch (err) {
                 console.error('Invalid token:', err);
@@ -43,8 +44,8 @@ export default function Home() {
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
+        localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.removeItem(REFRESH_TOKEN);
         setIsLoggedIn(false);
         window.location.href = '/';
     };

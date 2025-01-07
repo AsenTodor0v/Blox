@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import '../styles/Login.css';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
+
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -14,8 +16,8 @@ export default function Login() {
 
         try {
             const response = await api.post('/token/', { username, password });
-            localStorage.setItem('access_token', response.data.access);
-            localStorage.setItem('refresh_token', response.data.refresh);
+            localStorage.setItem(ACCESS_TOKEN, response.data.access);
+            localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
             navigate('/dashboard');
         } catch (error) {
             console.error('Error logging in:', error);
@@ -54,6 +56,10 @@ export default function Login() {
                     <button type="submit" className="login-button">
                         Login
                     </button>
+
+                    <div className="register-link">
+                        <p>Don't have an account? <a href="/register">Register</a></p>
+                    </div>
                 </form>
             </div>
         </div>

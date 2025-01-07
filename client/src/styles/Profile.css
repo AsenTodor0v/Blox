@@ -48,6 +48,11 @@
     color: white;
 }
 
+.home-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
 .profile-update-btn:hover {
     background-color: #45a049;
 }

@@ -17,10 +17,9 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         return user
     
 class UserSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     class Meta:
-        model = Profile
-        fields = ['username', 'email', 'first_name', 'last_name', 'profile_picture']
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']
 class PostSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField()
     comments = serializers.StringRelatedField(many=True, read_only=True)

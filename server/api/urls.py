@@ -13,6 +13,8 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('profile/', UserView.as_view(), name='user'),
+    path('profile-update/', UserUpdateView.as_view(), name='user-posts'),
+    path('user-posts/', UserPosts.as_view(), name='user-posts'),
     path('register/', RegisterUserView.as_view(), name='register-user'),
 
     path('posts/', PostListCreateView.as_view(), name='post-list-create'),

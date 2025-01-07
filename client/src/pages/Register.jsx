@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import api from "../api"
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 
 export default function Register() {
     const [username, setUsername] = useState('');
@@ -12,8 +13,8 @@ export default function Register() {
         try {
             const response = await api.post('/register/', { username, email, password });
             const { access, refresh } = response.data;
-            localStorage.setItem('access', access);
-            localStorage.setItem('refresh', refresh);
+            localStorage.setItem(ACCESS_TOKEN, access);
+            localStorage.setItem(REFRESH_TOKEN, refresh);
             window.location.href = '/login';
         } catch (error) {
             setError('Invalid username or password');

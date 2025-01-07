@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import '../styles/Profile.css';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 
 export default function Profile() {
     const [user, setUser] = useState('');
@@ -11,14 +12,14 @@ export default function Profile() {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const token = localStorage.getItem('access_token');
+                const token = localStorage.getItem(ACCESS_TOKEN);
                 if (token) {
                     const response = await api.get('profile/', {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
                     });
-                    setUser(response.data);  // Ensure this is setting the correct user data
+                    setUser(response.data);
                 } else {
                     setError('No authentication token found.');
                 }
@@ -32,17 +33,17 @@ export default function Profile() {
     }, []);
 
     const handleUpdate = () => {
-        navigate('/profile/update'); // Navigate to the profile update page
+        navigate('/profile/update');
     };
 
     const handleDelete = async () => {
         const confirmDelete = window.confirm('Are you sure you want to delete your profile?');
         if (confirmDelete) {
             try {
-                await api.delete('profile/');
-                localStorage.removeItem('access_token');
-                localStorage.removeItem('refresh_token');
-                navigate('/login'); // Redirect to login after successful deletion
+                await api.delete('profile-update/');
+                localStorage.removeItem(ACCESS_TOKEN);
+                localStorage.removeItem(REFRESH_TOKEN);
+                navigate('/login');
             } catch (error) {
                 console.error('Error deleting profile:', error);
                 setError('Failed to delete profile.');
@@ -68,11 +69,13 @@ export default function Profile() {
 
                     <div className="profile-actions">
                         <button onClick={handleUpdate} className="profile-update-btn">Update Profile</button>
+                        <button onClick={() => navigate('/')} className="home-btn">Home</button>
                         <button onClick={handleDelete} className="profile-delete-btn">Delete Profile</button>
+
                     </div>
                 </>
             ) : (
-                <p>Loading profile...</p> // Display a loading message if `user` is not yet available
+                <p>Loading profile...</p>
             )}
         </div>
     );
