@@ -17,22 +17,27 @@ To set up the project locally, follow these steps:
    git clone https://github.com/AsenTodor0v/Blox.git
 
 2. **Navigate to the project directory:**
+   ```bash
    cd Blox
 
-3. **Install server dependencies:**
-  cd server
-  pip install -r requirements.txt
+4. **Install server dependencies:**
+   ```bash
+   cd server
+   pip install -r requirements.txt
 
-4. **Install client dependencies:**
-  cd ../client
-  npm install
+6. **Install client dependencies:**
+   ```bash
+     cd ../client
+     npm install
 
 ## Usage
 To start the application:
 
 1. **Start the server:**
+   ```bash
    cd server
    python manage.py runserver
-2. **Start the client:**
+3. **Start the client:**
+   ```bash
    cd ../client
    npm run dev
